@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar - Cantinho Doce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-top">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/cantinhodoce.png" alt="Cantinho Doce Logo">
+        </a>
+      </div>
+      <div class="user-profile">
+        <a href="index.html" class="profile-link-back">
+          <i class="fa-solid fa-arrow-left"></i> Voltar às receitas
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container auth-page">
+    <div class="auth-card">
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab active" id="tabLogin" role="tab">Entrar</button>
+        <button type="button" class="auth-tab" id="tabRegister" role="tab">Criar conta</button>
+      </div>
+
+      <!-- Entrar -->
+      <form class="auth-form" id="loginForm" novalidate>
+        <label>E-mail
+          <input type="email" id="loginEmail" autocomplete="email" placeholder="voce@email.com" required>
+        </label>
+        <label>Senha
+          <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Sua senha" required>
+        </label>
+        <p class="form-error" id="loginError" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        <p class="auth-switch">Ainda não tem conta? <a href="#" id="goRegister">Cadastre-se</a></p>
+      </form>
+
+      <!-- Cadastrar -->
+      <form class="auth-form" id="registerForm" hidden novalidate>
+        <label>Nome
+          <input type="text" id="regName" autocomplete="name" maxlength="50" placeholder="Como quer ser chamado(a)" required>
+        </label>
+        <label>E-mail
+          <input type="email" id="regEmail" autocomplete="email" placeholder="voce@email.com" required>
+        </label>
+        <label>Senha
+          <input type="password" id="regPassword" autocomplete="new-password" placeholder="Mínimo de 6 caracteres" required>
+        </label>
+        <label>Confirmar senha
+          <input type="password" id="regPassword2" autocomplete="new-password" placeholder="Repita a senha" required>
+        </label>
+        <p class="form-error" id="registerError" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">Criar conta</button>
+        <p class="auth-switch">Já tem conta? <a href="#" id="goLogin">Entrar</a></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="comum.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
