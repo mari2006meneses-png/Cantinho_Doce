@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantinho Doce - Receitas de Doces</title>
+  <!-- Ícones do FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Link para o CSS externo -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header">
+    <div class="header-top">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#">
+          <img src="imagens/cantinhodoce.png" alt="Cantinho Doce Logo">
+        </a>
+      </div>
+
+      <!-- Barra de Pesquisa -->
+      <form class="search-bar" id="searchForm" role="search">
+        <input type="text" id="searchInput" placeholder="Buscar receitas doces (ex: Bolo de Cenoura)..." autocomplete="off" aria-label="Buscar receitas">
+        <button type="button" class="clear-btn" id="clearBtn" aria-label="Limpar busca"><i class="fa-solid fa-xmark"></i></button>
+        <button type="submit" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+      <!-- Perfil do Usuário -->
+      <div class="user-profile">
+        <a href="login.html" class="profile-link">
+          <i class="fa-solid fa-circle-user profile-icon"></i>
+          <span>Entrar / Cadastrar</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegação de Categorias -->
+    <nav class="categories-nav">
+      <ul>
+        <li><a href="#" class="active" data-category="">Todas</a></li>
+        <li><a href="#" data-category="Bolos & Tortas">Bolos & Tortas</a></li>
+        <li><a href="#" data-category="Brigadeiros & Docinhos">Brigadeiros & Docinhos</a></li>
+        <li><a href="#" data-category="Pavês & Mousse">Pavês & Mousse</a></li>
+        <li><a href="#" data-category="Pudins">Pudins</a></li>
+        <li><a href="#" data-category="Sobremesas Geladas">Sobremesas Geladas</a></li>
+        <li><a href="#" data-category="Biscoitos & Cookies">Biscoitos & Cookies</a></li>
+        <li><a href="#" data-category="Doces Tradicionais">Doces Tradicionais</a></li>
+        <li><a href="#" data-category="Saudáveis & Fit">Saudáveis & Fit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal - Grid de Receitas -->
+  <main class="container">
+    <h2 class="section-title" id="sectionTitle">O cantinho mais doce da sua cozinha</h2>
+    <!-- Ordenar, filtrar por tempo e receita aleatória -->
+    <div class="toolbar">
+      <label class="toolbar-field">
+        <span>Ordenar por</span>
+        <select id="sortSelect">
+          <option value="padrao">Padrão</option>
+          <option value="avaliadas">Mais bem avaliadas</option>
+          <option value="tempo">Menor tempo de preparo</option>
+          <option value="az">A–Z</option>
+        </select>
+      </label>
+      <label class="toolbar-field">
+        <span>Tempo de preparo</span>
+        <select id="timeSelect" title="O tempo na geladeira não é contado">
+          <option value="0">Qualquer tempo</option>
+          <option value="30">Até 30 min</option>
+          <option value="45">Até 45 min</option>
+          <option value="60">Até 1 hora</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn-ghost" id="surpriseBtn">
+        <i class="fa-solid fa-dice"></i> Me surpreenda
+      </button>
+    </div>
+
+    <p class="results-info" id="resultsInfo" aria-live="polite"></p>
+
+    <div class="recipes-grid" id="recipesGrid">
+      <!-- Os cards são criados pelo comum.js a partir de RECEITAS (e das receitas dos usuários) -->
+
+    </div>
+
+    <!-- Mensagem quando nada é encontrado -->
+    <div class="no-results" id="noResults">
+      <i class="fa-regular fa-face-sad-tear"></i>
+      <h3>Nenhuma receita encontrada</h3>
+      <p>Tente outro termo, como "bolo", "pudim" ou "limão".</p>
+    </div>
+  </main>
+
+  <script src="js/comum.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

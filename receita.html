@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receita - Cantinho Doce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho simples (a busca leva para a página inicial) -->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/cantinhodoce.png" alt="Cantinho Doce Logo">
+        </a>
+      </div>
+
+      <form class="search-bar" action="index.html" method="get" role="search">
+        <input type="text" name="q" placeholder="Buscar receitas doces (ex: Bolo de Cenoura)..." autocomplete="off" aria-label="Buscar receitas">
+        <button type="submit" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+      <div class="user-profile">
+        <a href="login.html" class="profile-link">
+          <i class="fa-solid fa-circle-user profile-icon"></i>
+          <span>Entrar / Cadastrar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container recipe-page" id="recipePage">
+
+    <!-- Caminho de navegação -->
+    <nav class="breadcrumb" aria-label="Você está em">
+      <a href="index.html">Início</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span id="crumbTag"></span>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span id="crumbTitle"></span>
+    </nav>
+
+    <!-- Topo da receita -->
+    <section class="recipe-hero">
+      <div class="recipe-hero-text">
+        <span class="recipe-tag" id="rTag"></span>
+        <h1 id="rTitle"></h1>
+
+        <div class="rating-summary">
+          <span class="stars" id="avgStars"></span>
+          <span id="ratingText"></span>
+          <a href="#comentarios" id="commentLink"></a>
+        </div>
+
+        <div class="recipe-meta">
+          <span><i class="fa-regular fa-clock"></i> <span id="rTime"></span></span>
+          <span><i class="fa-regular fa-user"></i> <span id="rServings"></span></span>
+        </div>
+
+        <div class="recipe-author big">
+          <span class="avatar author-avatar" id="rAvatar"><i class="fa-solid fa-circle-user"></i></span>
+          <span>Por <strong id="rAuthor"></strong></span>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-fav" id="favBtn">
+            <i class="fa-regular fa-heart"></i> <span>Favoritar</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="listenBtn" aria-pressed="false">
+            <i class="fa-solid fa-volume-high"></i> <span>Ouvir receita</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="shareBtn">
+            <i class="fa-solid fa-share-nodes"></i> Compartilhar
+          </button>
+          <button type="button" class="btn btn-ghost" id="printBtn">
+            <i class="fa-solid fa-print"></i> Imprimir
+          </button>
+        </div>
+      </div>
+
+      <div class="recipe-hero-img">
+        <img id="rImage" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+      </div>
+    </section>
+
+    <!-- Ingredientes e modo de preparo -->
+    <div class="recipe-body">
+      <section class="panel">
+        <h2><i class="fa-solid fa-basket-shopping"></i> Ingredientes</h2>
+        <p class="panel-hint">Clique para marcar o que você já tem.</p>
+        <ul class="ingredients-list" id="ingredients"></ul>
+      </section>
+
+      <section class="panel">
+        <h2><i class="fa-solid fa-kitchen-set"></i> Modo de preparo</h2>
+        <ol class="steps-list" id="steps"></ol>
+      </section>
+    </div>
+
+    <!-- Avaliação -->
+    <section class="panel rate-panel">
+      <h2><i class="fa-regular fa-star"></i> Avalie esta receita</h2>
+      <div class="rate-stars" id="rateStars" role="radiogroup" aria-label="Sua nota"></div>
+      <p class="rate-msg" id="rateMsg">Clique nas estrelas para dar sua nota.</p>
+    </section>
+
+    <!-- Comentários -->
+    <section class="panel" id="comentarios">
+      <h2><i class="fa-regular fa-comments"></i> Comentários <span class="count" id="commentCount">(0)</span></h2>
+
+      <p class="login-hint" id="commentLogin" hidden>
+        <i class="fa-regular fa-circle-user"></i>
+        <a href="login.html" id="commentLoginLink">Entre na sua conta</a> para comentar nesta receita.
+      </p>
+
+      <form class="comment-form" id="commentForm" hidden>
+        <textarea id="commentText" placeholder="Conte como ficou ou deixe uma dica..." maxlength="500" rows="3" required></textarea>
+        <button type="submit" class="btn btn-primary"><i class="fa-regular fa-paper-plane"></i> Comentar</button>
+      </form>
+
+      <div class="comments-list" id="commentsList"></div>
+    </section>
+
+    <!-- Veja também -->
+    <section class="related">
+      <h2 class="section-title">Veja também</h2>
+      <div class="recipes-grid" id="relatedGrid"></div>
+    </section>
+  </main>
+
+  <!-- Receita não encontrada -->
+  <main class="container not-found" id="notFound" hidden>
+    <i class="fa-regular fa-face-sad-tear"></i>
+    <h2>Receita não encontrada</h2>
+    <p>Esse link não leva a nenhuma receita.</p>
+    <a href="index.html" class="btn btn-primary">Voltar para as receitas</a>
+  </main>
+
+  <script src="js/comum.js"></script>
+  <script src="js/receita.js"></script>
+</body>
+</html>

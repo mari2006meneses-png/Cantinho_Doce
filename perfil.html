@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu perfil - Cantinho Doce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-top">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/cantinhodoce.png" alt="Cantinho Doce Logo">
+        </a>
+      </div>
+
+      <form class="search-bar" action="index.html" method="get" role="search">
+        <input type="text" name="q" placeholder="Buscar receitas doces (ex: Bolo de Cenoura)..." autocomplete="off" aria-label="Buscar receitas">
+        <button type="submit" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+      <div class="user-profile">
+        <a href="perfil.html" class="profile-link">
+          <i class="fa-solid fa-circle-user profile-icon"></i>
+          <span>Perfil</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Cabeçalho do perfil -->
+    <section class="profile-header">
+      <span class="avatar profile-avatar" id="pAvatar"><i class="fa-solid fa-circle-user"></i></span>
+      <div class="profile-info">
+        <h1 id="pName"></h1>
+        <p id="pEmail"></p>
+        <p class="profile-since" id="pSince"></p>
+        <div class="photo-actions">
+          <label class="link-btn" for="pPhoto"><i class="fa-solid fa-camera"></i> <span id="pPhotoLabel">Adicionar foto</span></label>
+          <input type="file" id="pPhoto" accept="image/*" hidden>
+          <button type="button" class="link-btn" id="pPhotoRemove" hidden>Remover foto</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Sair
+      </button>
+    </section>
+
+    <!-- Abas -->
+    <div class="profile-tabs" role="tablist">
+      <button type="button" class="profile-tab active" data-tab="favoritas">
+        <i class="fa-solid fa-heart"></i> Favoritas <span class="count" id="favCount">(0)</span>
+      </button>
+      <button type="button" class="profile-tab" data-tab="minhas">
+        <i class="fa-solid fa-book-open"></i> Minhas receitas <span class="count" id="mineCount">(0)</span>
+      </button>
+      <button type="button" class="profile-tab" data-tab="publicar">
+        <i class="fa-solid fa-plus"></i> Publicar receita
+      </button>
+    </div>
+
+    <!-- Favoritas -->
+    <section class="tab-panel" id="panel-favoritas">
+      <div class="recipes-grid" id="favGrid"></div>
+      <div class="empty-state" id="favEmpty" hidden>
+        <i class="fa-regular fa-heart"></i>
+        <h3>Nenhuma favorita ainda</h3>
+        <p>Toque no coração de uma receita para guardá-la aqui.</p>
+        <a href="index.html" class="btn btn-primary">Ver receitas</a>
+      </div>
+    </section>
+
+    <!-- Minhas receitas -->
+    <section class="tab-panel" id="panel-minhas" hidden>
+      <div class="recipes-grid" id="mineGrid"></div>
+      <div class="empty-state" id="mineEmpty" hidden>
+        <i class="fa-solid fa-cookie-bite"></i>
+        <h3>Você ainda não publicou receitas</h3>
+        <p>Compartilhe sua receita favorita com todo mundo.</p>
+        <button type="button" class="btn btn-primary" id="goPublish">Publicar minha primeira receita</button>
+      </div>
+    </section>
+
+    <!-- Publicar -->
+    <section class="tab-panel" id="panel-publicar" hidden>
+      <form class="panel publish-form" id="publishForm" novalidate>
+        <h2><i class="fa-solid fa-pen-to-square"></i> <span id="formTitle">Nova receita</span></h2>
+
+        <label class="field">Nome da receita
+          <input type="text" id="fTitle" maxlength="80" placeholder="Ex: Bolo de cenoura com cobertura" required>
+        </label>
+
+        <div class="field-row">
+          <label class="field">Categoria
+            <select id="fTag" required></select>
+          </label>
+          <label class="field">Tempo de preparo (min)
+            <input type="number" id="fTime" min="1" max="1440" placeholder="45" required>
+          </label>
+          <label class="field">Porções
+            <input type="number" id="fServings" min="1" max="100" placeholder="8" required>
+          </label>
+        </div>
+
+        <label class="field">Foto (opcional)
+          <input type="file" id="fImage" accept="image/*">
+        </label>
+        <img class="image-preview" id="imgPreview" alt="Prévia da foto" hidden>
+        <button type="button" class="link-btn" id="removePhoto" hidden>Remover foto</button>
+
+        <label class="field">Ingredientes <small>(um por linha)</small>
+          <textarea id="fIngredients" rows="6" placeholder="2 xícaras de farinha&#10;3 ovos&#10;1 xícara de açúcar" required></textarea>
+        </label>
+
+        <label class="field">Modo de preparo <small>(um passo por linha)</small>
+          <textarea id="fSteps" rows="6" placeholder="Misture os ingredientes secos.&#10;Adicione os ovos e mexa bem.&#10;Asse por 40 minutos." required></textarea>
+        </label>
+
+        <p class="form-error" id="publishError" role="alert"></p>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> <span id="publishBtn">Publicar receita</span></button>
+          <button type="button" class="btn btn-ghost" id="cancelEdit" hidden>Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/comum.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>
