@@ -2,7 +2,7 @@
 
 Site de receitas de doces, feito com HTML, CSS e JavaScript puros, para a disciplina de **Programação Web I** (Engenharia de Software – UEPA).
 
-🔗 **Site publicado:** [COLOCAR O ENDEREÇO DO GITHUB PAGES AQUI]
+🔗 **Site publicado:** (https://mari2006meneses-png.github.io/Cantinho_Doce/)
 
 ---
 
